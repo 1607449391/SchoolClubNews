@@ -14,4 +14,6 @@ public interface Dicts {
     public static final Integer MD5_ITERATIONS = 1024;
     //Token密钥
     public static final String TOKEN_SECRET_KEY = "Rn&^Fbf4Ran^W4oY";
+    // Token失效时间
+    public static final long TOKEN_EXPIRE_TIME = 5 * 60;
 }

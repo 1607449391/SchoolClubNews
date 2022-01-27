@@ -1,5 +1,6 @@
 package com.ssm.schoolclubnews.exception;
 
+import com.ssm.schoolclubnews.util.LoggerUtil;
 import com.ssm.schoolclubnews.util.ResponseUtil;
 import com.ssm.schoolclubnews.util.StatusCode;
 import lombok.extern.slf4j.Slf4j;
@@ -34,9 +35,10 @@ public class GlobalExceptionAspect {
             if (throwable instanceof GlobalException) {
                 GlobalException globalException = (GlobalException) throwable;
                 StatusCode code = globalException.getCode();
-
+                LoggerUtil.error("", globalException);
                 return ResponseUtil.fail(code.getCode(), code.getMsg());
             } else {
+                LoggerUtil.error("", throwable);
                 return ResponseUtil.fail(StatusCode.FAIL.getCode(), StatusCode.FAIL.getMsg());
             }
         }

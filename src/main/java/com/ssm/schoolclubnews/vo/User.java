@@ -48,4 +48,9 @@ public class User extends Base {
      * 邮箱
      */
     private String email;
+
+    /**
+     * 随机盐
+     */
+    private String salt;
 }

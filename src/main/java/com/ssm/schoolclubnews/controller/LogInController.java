@@ -3,8 +3,11 @@ package com.ssm.schoolclubnews.controller;
 import com.alibaba.druid.util.StringUtils;
 import com.ssm.schoolclubnews.exception.CatchExceptions;
 import com.ssm.schoolclubnews.exception.GlobalException;
+import com.ssm.schoolclubnews.services.ILoginService;
+import com.ssm.schoolclubnews.util.ResponseUtil;
 import com.ssm.schoolclubnews.util.StatusCode;
 import com.ssm.schoolclubnews.vo.ResponseBase;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,6 +21,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/")
 public class LogInController {
+    @Autowired
+    private ILoginService loginService;
 
     @GetMapping("/login")
     @CatchExceptions
@@ -25,6 +30,7 @@ public class LogInController {
         if (StringUtils.isEmpty(userName) || StringUtils.isEmpty(password)) {
             throw new GlobalException(StatusCode.USERNAME_OR_PASSWORD_IS_NULL);
         }
-        return null;
+        String login = loginService.login(userName, password);
+        return ResponseUtil.success(login);
     }
 }

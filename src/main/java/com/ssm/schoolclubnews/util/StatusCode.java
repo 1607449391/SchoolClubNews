@@ -17,7 +17,9 @@ public enum StatusCode {
      */
     FAIL("请求失败", 500),
 
-    USERNAME_OR_PASSWORD_IS_NULL("用户名或密码不能为空", 510);
+    USERNAME_OR_PASSWORD_IS_NULL("用户名或密码不能为空", 510),
+
+    USERNAME_OR_PASSWORD_IS_ERROR("用户名或者密码错误！", 511);
 
 
     String msg;
