@@ -5,7 +5,19 @@
 <mapper namespace="com.ssm.schoolclubnews.dao.IUserDao">
 
     <select id="getUserByUserName" resultType="User">
-        SELECT * FROM tpl_users WHERE `name` = #{userName}
+        SELECT * FROM tpl_users WHERE `name` = #{userName} AND is_deleted = 'N'
     </select>
+
+    <insert id="insertUser" parameterType="User">
+        INSERT INTO tpl_users VALUES (
+        #{user.id},#{user.name}
+        )
+    </insert>
+
+    <update id="updateUserById" parameterType="User">
+        UPDATE tpl_users SET
+
+        WHERE id = #{user.id}
+    </update>
 
 </mapper>
